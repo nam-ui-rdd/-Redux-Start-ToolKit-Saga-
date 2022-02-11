@@ -1,44 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Đến với project của tôi bạn cần hiểu cấu trúc đặt thư mục của tôi
+# Ở đây tôi quyết định kết hợp react + nextjs để làm 1 page project 
 
-## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# A.1 index.tsx provider { <persistStore >  <F.C APP /> <persistStore // để đảm bảo Redux state sẽ được lưu vào storage mỗi khi nó thay đổi. /> }
+ #   B.1 _start (_start, app, setup) // { "_start" một cái bải rác  nơi chứa đụng hình ảnh, các hàm sài lại, layout & & component nhằm mục đích tái sử dụng,  core chứa đụng các DefaultThemeConfig, ThemeProvider }
+ #   B.2 app (_start, app, setup) // { "app" gồm modules, page, routes, App.js  } => modules một mớ hổn độn liên quan đến việc quản lý giao diện nhỏ như auth { CURD, F.C, _morks, Models, Layout  } như cái tên __Page nơi làm nhiệm vụ chia giao diện theo trang để hiểu phải không :>> để hiểu thế nào được. routes chịu trách nhiệm chia routes của trang https. App.js tổ chức giao diện  
+ #   B.3 setup (_start, app, setup) // { "setup" nơi mà bạn config những thư đầu tiền của dự án như  redux or axios } 
+# h thì điểm lại cấy trúc của nó nhé
+src {
+    "_start"// < asset, helper, layout, partials> :{ 
+        "asset" :{  }//  scss< tổ chức all style >, ts< thao tacs dom, tất cả các hàm sử lý liên quan đến ui <sử lý date> >
+        "helper": { }// các hám 
+        "layout" : {} // tổ chức giao diện tổng thể header, footer, content,... core, theme DefaultThemeConfig 
+        "partials": {}// tổng hợp giao diện và phân cấp theo role người dùng, chứ đụng content ui
+    }
+    "app":{
+        "modules": như tiên gọi sử lý CURD, ui,  table database....
+        "pages": tập hợp ui chia thành các trang cho routes hiểu
+        "routes" config link htttps
+        "App.tsx" tổ chức mấy cái tào lao 
+    }
+    "setup":{
+        "redux" : nơi config đầu tiên config configureStore, createSagaMiddleware, ... RootState
+        "axios" : config interface axios
+    }
+}
